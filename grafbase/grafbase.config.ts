@@ -7,7 +7,7 @@ const user = g.model('user', {
   description: g.string().optional(),
   githubUrl: g.url().optional(),
   linkedInUrl: g.url().optional(),
-  projects: g.relation(() => Project).list(),
+  projects: g.relation(() => Project).list().optional(),
 })
 
 const Project = g.model('project', {
@@ -16,8 +16,8 @@ const Project = g.model('project', {
   image: g.url(),
   liveSiteUrl:g.url(),
   githubUrl: g.url(),
-  category: g.string(),
-  createdBy: g.relation(() => User),
+  category: g.string().search(),
+  createdBy: g.relation(() => user),
 })
 
 
